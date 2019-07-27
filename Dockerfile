@@ -1,14 +1,10 @@
-FROM lsiobase/nginx:3.10
+FROM lsiobase/alpine.python
 LABEL MAINTAINER=christronyxyocum
 
 # Install packages
 RUN \
- apk add --no-cache --virtual=build-dependencies \
-	python3-dev \
-	py3-pip && \
  apk add --no-cache \
-  git \
-	python3
+  git
 
 # Add local files
 COPY root/ /
