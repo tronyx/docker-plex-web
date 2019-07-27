@@ -4,6 +4,7 @@ LABEL MAINTAINER=christronyxyocum
 # Install packages
 RUN \
  apk add --no-cache \
+  gcc \
   git
 
 # Add local files
