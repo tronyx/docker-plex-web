@@ -11,7 +11,7 @@ RUN \
  apk add --no-cache \
   git \
   libxml2-dev \
-  libxslt1-dev
+  libxslt-dev
 
 # Add local files
 COPY root/ /
