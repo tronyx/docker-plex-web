@@ -1,2 +1,3 @@
 # Run flask server
-flask run
+exec \
+	s6-setuidgid abc flask run
