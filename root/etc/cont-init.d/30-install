@@ -17,7 +17,7 @@ fi
 
 # Install requirements
 cd /config/plex-web || exit 1
-pip3 install -r requirements.txt
+pip3 install --no-cache-dir -r requirements.txt
 
 # Set Permissions
 chown -R abc:abc \
