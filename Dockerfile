@@ -3,8 +3,12 @@ LABEL MAINTAINER=christronyxyocum
 
 # Install packages
 RUN \
- apk add --no-cache \
+ apk add --no-cache --virtual=build-dependencies \
   gcc \
+  musl-dev \
+  python3-dev \
+  py3-pip && \
+ apk add --no-cache \
   git
 
 # Add local files
