@@ -1,3 +1,5 @@
+#!/usr/bin/with-contenv bash
+
 # Run flask server
 exec \
-	s6-setuidgid abc flask run
+  s6-setuidgid abc flask run

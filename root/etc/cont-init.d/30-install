@@ -1,22 +1,22 @@
 #!/usr/bin/with-contenv bash
 
 # Fetch site or update existing
-if [[ ! -d /config/www/plpp/.git ]]; then
-  echo '-------------------'
-  echo '| Installing plpp |'
-  echo '-------------------'
-  git clone https://github.com/banjoanton/plex-web.git /config/www/plex-web
-elif [[ -d /config/www/plpp/.git ]]; then
-  echo '-------------------'
-  echo '|  Updating plpp  |'
-  echo '-------------------'
-  cd /config/www/plex-web || return
+if [[ ! -d /config/plex-web/.git ]]; then
+  echo '-----------------------'
+  echo '| Installing plex-web |'
+  echo '-----------------------'
+  git clone https://github.com/banjoanton/plex-web.git /config/plex-web
+elif [[ -d /config/plex-web/.git ]]; then
+  echo '-----------------------'
+  echo '|  Updating plex-web  |'
+  echo '-----------------------'
+  cd /config/plex-web || return
   git reset --hard origin/master
   git pull --rebase
 fi
 
 # Install requirements
-cd /config/www/plex-web || exit 1
+cd /config/plex-web || exit 1
 pip3 install -r requirements.txt
 
 # Set Permissions
