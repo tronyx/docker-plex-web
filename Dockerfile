@@ -9,7 +9,9 @@ RUN \
   python3-dev \
   py3-pip && \
  apk add --no-cache \
-  git
+  git \
+  libxml2-dev \
+  libxslt1-dev
 
 # Add local files
 COPY root/ /

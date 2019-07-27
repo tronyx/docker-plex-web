@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+cd /config/plex-web || exit 1
+
 # Run flask server
 exec \
   s6-setuidgid abc flask run
