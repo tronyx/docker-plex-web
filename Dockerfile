@@ -26,5 +26,5 @@ RUN \
 COPY root/ /
 
 # Ports and volumes
-EXPOSE 80
+EXPOSE 5000
 VOLUME /config
