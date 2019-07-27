@@ -1,42 +1,41 @@
-A Docker image for [PHP Library Presenter for PLEX](https://github.com/Tensai75/plpp) using the `lsiobase/alpine.nginx:3.8` base image.
+A Docker image for [Plex Web](https://github.com/banjoanton/plex-web) using the `lsiobase/alpine.python` base image.
 
-# tronyx/docker-plpp
+# christronyxyocum/docker-plex-web
 
 Feel free to submit Pull Requests and report any Issues that you may have found.
 
-## PLPP
+## Plex Web
 
-Provides a PHP front end to simply present PLEX libraries on the web without the possibility to play or download the library items. Currently movie/home video, TV show, music and photo/picture libraries are supported.
+PlexWeb is a web app for Plex servers. Connect to your server via your URL and token to access features like viewing current activity and adding playlists based on IMDb lists. Based on Flask.
 
 ## Usage
 
 ```
 docker create \
-  --name plpp \
+  --name plex-web \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
-  -p 80:80 \
-  tronyx/docker-plpp
+  -p 5000:5000 \
+  tronyx/plex-web
 ```
 
 Then start the container with:
 
 ```
-docker start plpp
+docker start plex-web
 ```
 
 For Docker-Compose you can use something similar to the below:
 
 ```
 plpp:
-  container_name: plpp
-  image: tronyx/docker-plpp
-  hostname: plpp
+  container_name: plex-web
+  image: tronyx/plex-web
   restart: on-failure
   volumes:
-    - "/home/plpp/config/:/config"
+    - "/home/plex-web/config/:/config"
   ports:
-    - "8383:80"
+    - "5000:5000"
 ```
 
 ## Parameters
@@ -63,11 +62,11 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-Point your web browser to `DOCKER-HOST-IP:PLPP-PORT/settings.php`, IE: `http://192.168.x.x:8080/settings.php` and you will first be prompted to set the password for the settings section. Once you're done that you can login and configure the settings.
+Point your web browser to `DOCKER-HOST-IP:PLEX-WEB-PORT`, IE: `http://192.168.x.x:5000` and you will first be prompted to add your Plex Server URL and token. The URL for your Plex Server should be in the following format: `http://192.168.1.4:32400`
 
 ## Info
 
-* Shell access whilst the container is running: `docker exec -it plpp /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f plpp`
-* Container version number: `docker inspect -f '{{ index .Config.Labels "build_version" }}' plpp`
-* Image version number: `docker inspect -f '{{ index .Config.Labels "build_version" }}' tronyx/docker-plpp`
+* Shell access whilst the container is running: `docker exec -it plex-web /bin/bash`
+* To monitor the logs of the container in real-time: `docker logs -f plex-web`
+* Container version number: `docker inspect -f '{{ index .Config.Labels "build_version" }}' plex-web`
+* Image version number: `docker inspect -f '{{ index .Config.Labels "build_version" }}' tronyx/plex-web`
