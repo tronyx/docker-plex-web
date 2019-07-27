@@ -16,8 +16,8 @@ RUN \
  cd /config/plex-web && \
  pip3 install --no-cache-dir -r requirements.txt && \
  chown -R abc:abc /config && \
- apk del --purge \
-	build-dependencies && \
+ #apk del --purge \
+	#build-dependencies && \
  rm -rf \
 	/root/.cache \
 	/tmp/*
