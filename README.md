@@ -13,7 +13,6 @@ PlexWeb is a web app for Plex servers. Connect to your server via your URL and t
 ```
 docker create \
   --name plex-web \
-  -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
   -p 5000:5000 \
   tronyx/plex-web
@@ -32,8 +31,6 @@ plpp:
   container_name: plex-web
   image: tronyx/plex-web
   restart: on-failure
-  volumes:
-    - "/home/plex-web/config/:/config"
   ports:
     - "5000:5000"
 ```
@@ -43,7 +40,6 @@ plpp:
 The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container. So `-p 5000:5000` would expose port 5000 from inside the container to be accessible from the host's IP on port 5000 and `http://192.168.x.x:5000` would show you what's running INSIDE the container on port 5000.
 
 * `-p 5000` - The port(s)
-* `-v /config` - Mapping the config files for PLPP
 * `-e PGID` Used for GroupID - see below for explanation
 * `-e PUID` Used for UserID - see below for explanation
 
