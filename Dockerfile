@@ -33,4 +33,3 @@ COPY root/ /
 
 # Ports and volumes
 EXPOSE 5000
-VOLUME /config
