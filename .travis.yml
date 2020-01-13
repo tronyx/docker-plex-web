@@ -6,7 +6,7 @@ script:
   # Build image
   - docker build -t tronyx/plex-web .
   # Test image
-  #- docker run tronyx/plex-web nginx -v
+  - docker run tronyx/plex-web flask --version
 after_success:
   # Push image
   - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS" ${DOCKER_REGISTRY}
